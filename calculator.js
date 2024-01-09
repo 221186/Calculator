@@ -1,33 +1,18 @@
-function add() {
-    let num1 = parseFloat(document.getElementById('num1').value);
-    let num2 = parseFloat(document.getElementById('num2').value);
-    let result = num1 + num2;
-    document.getElementById('result').innerHTML = '결과: '+ result;
-}   
-function subtract() {
-    let num1 = parseFloat(document.getElementById('num1').value);
-    let num2 = parseFloat(document.getElementById('num2').value);
-    let result = num1 - num2;
-    document.getElementById('result').innerHTML = '결과: '+ result;
-}   
-function multiply() {
-    let num1 = parseFloat(document.getElementById('num1').value);
-    let num2 = parseFloat(document.getElementById('num2').value);
-    let result = num1 * num2;
-    document.getElementById('result').innerHTML = '결과: '+ result;
-}   
-function divide() {
-    let num1 = parseFloat(document.getElementById('num1').value);
-    let num2 = parseFloat(document.getElementById('num2').value);
-    if (num2 === 0) {
-        document.getElementById('result').innerHTML = '0으로 나눌 수 없습니다.'
+const display = document.getElementById('display');  // ID가 display인 태그를 찾는다.
+
+function add(input) { //버튼(사용자의 입력)을 누르면 계속 늘어나도록 한다.
+    display.value += input
+}
+
+function calculator() { //eval함수를 통해 display의 값들을 계산한다.
+    try {
+        display.value = eval(display.value);
     }
-    
-    let result = num1 / num2;
-    document.getElementById('result').innerHTML = '결과: '+ result;
-}   
-function zero() {
-    let num1 = document.getElementById('num1').value 
-    let num2 = document.getElementById('num2').value
-    
+    catch(error) {
+        display.value = 'Error';
+    }
+}
+
+function cleardisplay() { // C 버튼을 누르면 값이 없어진다.
+    display.value = "";
 }
